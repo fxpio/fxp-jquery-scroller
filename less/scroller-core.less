@@ -1,0 +1,47 @@
+//
+// Scroller Core
+// --------------------------------------------------
+
+[data-scroller="true"] {
+    overflow: hidden;
+}
+
+.scroller-scrollbar {
+    display: none;
+    position: absolute;
+    background-color: @scroller-scrollbar-bg;
+    opacity: @scroller-scrollbar-opacity;
+    z-index: @zindex-scroller-scrollbar;
+    .border-top-radius(@scroller-scrollbar-radius);
+    .border-bottom-radius(@scroller-scrollbar-radius);
+
+    &.vertical {
+        top: 0;
+        right: 0;
+        width: @scroller-scrollbar-width;
+        height: 100%;
+        margin: 0 @scroller-scrollbar-margin;
+
+        &.scroller-inverse {
+            left: 0;
+            right: inherit;
+        }
+    }
+
+    &.horizontal {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: @scroller-scrollbar-width;
+        margin: @scroller-scrollbar-margin 0;
+
+        &.scroller-inverse {
+            top: 0;
+            bottom: inherit;
+        }
+    }
+
+    &.scroller-active {
+        display: block;
+    }
+}
