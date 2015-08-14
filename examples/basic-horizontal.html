@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>Basic horizontal example - Sonatra Jquery Scroller</title>
+    <link href="../css/scroller.css" rel="stylesheet">
+    <style>
+        body {
+            height: 2000px;
+            margin: 10px;
+            padding: 40px;
+        }
+
+        .content {
+            background: #eee;
+            width: 400px;
+            white-space: nowrap;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body>
+<div class="content" data-scroller="true" data-scrollbar-inverse="true" data-direction="horizontal">
+    <p>
+        The paragraph 1.
+        The paragraph 2.
+        The paragraph 3.
+        The paragraph 4.
+        The paragraph 5.
+        The paragraph 6.
+        The paragraph 7.
+        The paragraph 8.
+        The paragraph 9.
+        The paragraph 10.
+        The paragraph 11.
+        The paragraph 12.
+        The paragraph 13.
+        The paragraph 14.
+        The paragraph 15.
+        The paragraph 16.
+        The paragraph 17.
+        The paragraph 18.
+        The paragraph 19.
+        The paragraph 20.
+        The paragraph 21.
+        The paragraph 22.
+        The paragraph 23.
+        The paragraph 24.
+        The paragraph 25.
+        The paragraph 26.
+        The paragraph 27.
+        The paragraph 28.
+        The paragraph 29.
+        The paragraph 30.
+        The paragraph 31.
+        The paragraph 32.
+    </p>
+</div>
+<script>
+    var require = {
+        paths: {
+            'jquery': '../bower_components/jquery/dist/jquery',
+            'sonatra-jquery-scroller': '../js/scroller'
+        },
+        deps: [
+            'sonatra-jquery-scroller'
+        ],
+        callback: function () {
+            $(window).trigger('load');
+        }
+    };
+</script>
+<script src="../bower_components/requirejs/require.js" async="async"></script>
+</body>
+</html>
