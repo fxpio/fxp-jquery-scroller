@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>Sticky header example - Sonatra Jquery Scroller</title>
+    <link href="../css/scroller.css" rel="stylesheet">
+    <style>
+        body {
+            height: 2000px;
+            margin: 10px;
+            padding: 40px;
+        }
+
+        .content {
+            background: #eee;
+            height: 300px;
+            width: 200px;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        .content-item,
+        .content-item > ul > li {
+            display: block;
+            padding: 7px 14px;
+            list-style: none;
+        }
+
+        .content-item > span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<div class="content" data-scroller="true" data-scroller-sticky-header="true">
+    <ul>
+        <li class="content-item">
+            <span>Header 1</span>
+            <ul>
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 4</a></li>
+                <li><a href="#">Link 5</a></li>
+            </ul>
+        </li>
+        <li class="content-item">
+            <span>Header 2</span>
+            <ul>
+                <li><a href="#">Link 6</a></li>
+                <li><a href="#">Link 7</a></li>
+                <li><a href="#">Link 8</a></li>
+                <li><a href="#">Link 9</a></li>
+                <li><a href="#">Link 10</a></li>
+            </ul>
+        </li>
+        <li class="content-item">
+            <span>Header 3</span>
+            <ul>
+                <li><a href="#">Link 11</a></li>
+                <li><a href="#">Link 12</a></li>
+                <li><a href="#">Link 13</a></li>
+                <li><a href="#">Link 14</a></li>
+                <li><a href="#">Link 15</a></li>
+            </ul>
+        </li>
+        <li class="content-item">
+            <span>Header 4</span>
+            <ul>
+                <li><a href="#">Link 16</a></li>
+                <li><a href="#">Link 17</a></li>
+                <li><a href="#">Link 18</a></li>
+                <li><a href="#">Link 19</a></li>
+                <li><a href="#">Link 20</a></li>
+            </ul>
+        </li>
+        <li class="content-item">
+            <span>Header 5</span>
+            <ul>
+                <li><a href="#">Link 21</a></li>
+                <li><a href="#">Link 22</a></li>
+                <li><a href="#">Link 23</a></li>
+                <li><a href="#">Link 24</a></li>
+                <li><a href="#">Link 25</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script>
+    var require = {
+        paths: {
+            'jquery': '../bower_components/jquery/dist/jquery',
+            'sonatra-jquery-scroller': '../js/scroller',
+            'sonatra-sticky-header': '../js/sticky-header'
+        },
+        deps: [
+            'sonatra-jquery-scroller',
+            'sonatra-sticky-header'
+        ],
+        callback: function () {
+            $(window).trigger('load');
+        }
+    };
+</script>
+<script src="../bower_components/requirejs/require.js" async="async"></script>
+</body>
+</html>
