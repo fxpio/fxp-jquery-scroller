@@ -158,6 +158,11 @@
             $content = $('<div class="' + opts.contentClass + '"></div>'),
             scrollType = opts.scrollbar ? 'auto' : 'scroll';
 
+        if (null !== self.options.contentSelector) {
+            $content = $(self.options.contentSelector, self.$element);
+            $content.addClass(self.options.contentClass);
+        }
+
         contentCss.position = 'relative';
         contentCss.display = 'block';
         contentCss.overflow = 'hidden';
@@ -183,10 +188,12 @@
             'overflow': 'hidden'
         });
 
-        self.$element.children().each(function () {
-            $content.append(this);
-        });
-        self.$element.append($content);
+        if (null === self.options.contentSelector) {
+            self.$element.children().each(function () {
+                $content.append(this);
+            });
+            self.$element.append($content);
+        }
 
         return $content;
     }
@@ -210,10 +217,26 @@
             'overflow': ''
         });
 
-        self.$content.remove();
-        self.$content.children().each(function () {
-            self.$element.append(this);
-        });
+        if (null === self.options.contentSelector) {
+            self.$content.remove();
+            self.$content.children().each(function () {
+                self.$element.append(this);
+            });
+
+            return null;
+        }
+
+        self.$content
+            .removeClass(self.options.contentClass)
+            .css({
+                'position': '',
+                'display': '',
+                'overflow': '',
+                'width': '',
+                'height': '',
+                'margin-right': '',
+                'margin-bottom': ''
+            });
 
         return null;
     }
@@ -302,6 +325,7 @@
         scrollbarInverse:     false,
         scrollbarMinSize:     14,
         contentClass:         'scroller-content',
+        contentSelector:      null,
         autoConfig:           true,
         preventMouseScroll:   false,
         direction:            Scroller.DIRECTION_VERTICAL,
