@@ -315,11 +315,11 @@
      *
      * @return {Number}
      */
-    function setScrollPosition(position) {
+    Scroller.prototype.setScrollPosition = function (position) {
         return this.isVertical
             ? this.$content.scrollTop(position)
             : this.$content.scrollLeft(position);
-    }
+    };
 
     /**
      * Get the vertical/horizontal scroll position.
