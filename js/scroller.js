@@ -179,7 +179,8 @@
         $content.css(contentCss);
 
         self.$element.css({
-            'position': 'relative'
+            'position': 'relative',
+            'overflow': 'hidden'
         });
 
         self.$element.children().each(function () {
@@ -205,7 +206,8 @@
         }
 
         self.$element.css({
-            'position': ''
+            'position': '',
+            'overflow': ''
         });
 
         self.$content.remove();
