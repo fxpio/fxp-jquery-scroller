@@ -26,8 +26,10 @@ module.exports = function (grunt) {
             default: {
                 files: [
                     '/*.html',
-                    '/*.css'
-                ]
+                    '/*.css',
+                    '**/*.less'
+                ],
+                tasks: ['less']
             }
         },
         browserSync: {
@@ -42,12 +44,17 @@ module.exports = function (grunt) {
                     watchTask: true,
                     injectChanges: false,
                     server: {
-                        baseDir: ['./', './examples']
+                        baseDir: ['examples'],
+                        routes: {
+                            "/bower_components": "bower_components",
+                            "/js": "js",
+                            "/css": "css"
+                        }
                     }
                 },
                 bsFiles: {
                     src: [
-                        './**/*.{less,css,html,js}'
+                        './**/*.{css,html,js}'
                     ]
                 }
             }
