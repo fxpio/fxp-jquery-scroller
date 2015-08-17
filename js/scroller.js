@@ -29,6 +29,22 @@
     'use strict';
 
     /**
+     * Trigger the event.
+     *
+     * @param {String} name The event name
+     *
+     * @param {Scroller} self The scroller instance
+     *
+     * @private
+     */
+    function trigger(name, self) {
+        var event = $.Event(name + '.st.scroller');
+        event.hammerScroll = self;
+
+        self.$element.trigger(event);
+    }
+
+    /**
      * Get the width of native scrollbar.
      *
      * @returns {Number}
@@ -87,6 +103,8 @@
         if (undefined !== self.stickyHeader) {
             self.stickyHeader.checkPosition();
         }
+
+        trigger('scrolling', self);
     }
 
     /**
@@ -292,9 +310,7 @@
             $(window).on('resize.st.scroller-bar' + this.guid, null, this, this.resizeScrollbar);
         }
 
-        if (this.options.scrollbar || this.options.scrollerStickyHeader) {
-            this.$content.on('scroll.st.scroller', null, this, onScrolling);
-        }
+        this.$content.on('scroll.st.scroller', null, this, onScrolling);
 
         if (this.options.scrollerStickyHeader && $.fn.stickyHeader) {
             this.stickyHeader = this.$element.stickyHeader().data('st.stickyheader');
