@@ -7,6 +7,9 @@
  * file that was distributed with this source code.
  */
 
+/*global define*/
+/*global jQuery*/
+
 /**
  * @param {jQuery} $
  */

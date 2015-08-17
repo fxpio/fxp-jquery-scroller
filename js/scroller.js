@@ -7,6 +7,9 @@
  * file that was distributed with this source code.
  */
 
+/*global define*/
+/*global jQuery*/
+
 /**
  * @param {jQuery} $
  */
@@ -99,13 +102,13 @@
             position,
             maxPosition;
 
-        delta = (event.originalEvent.type === 'DOMMouseScroll'
-            ? event.originalEvent.detail * -40
-            : event.originalEvent.wheelDelta);
+        delta = (event.originalEvent.type === 'DOMMouseScroll' ?
+            event.originalEvent.detail * -40 :
+            event.originalEvent.wheelDelta);
         position = self.getScrollPosition();
-        maxPosition = self.isVertical
-            ? self.$content.get(0).scrollHeight - self.$content.innerHeight()
-            : self.$content.get(0).scrollWidth - self.$content.innerWidth();
+        maxPosition = self.isVertical ?
+            self.$content.get(0).scrollHeight - self.$content.innerHeight() :
+            self.$content.get(0).scrollWidth - self.$content.innerWidth();
 
         if (self.isVertical || (!self.isVertical && event.shiftKey)) {
             if ((delta > 0 && position <= 0) || (delta < 0 && position >= maxPosition)) {
@@ -250,7 +253,7 @@
     function validateOptions(self, options) {
         var autoConf = options.autoConfig;
 
-        if (autoConf && self.nativeScrollbarSize == 0) {
+        if (autoConf && 0 === self.nativeScrollbarSize) {
             options.scrollbar = false;
         }
 
@@ -340,9 +343,9 @@
      * @return {Number}
      */
     Scroller.prototype.setScrollPosition = function (position) {
-        return this.isVertical
-            ? this.$content.scrollTop(position)
-            : this.$content.scrollLeft(position);
+        return this.isVertical ?
+            this.$content.scrollTop(position) :
+            this.$content.scrollLeft(position);
     };
 
     /**
@@ -351,9 +354,9 @@
      * @returns {Number}
      */
     Scroller.prototype.getScrollPosition = function () {
-        return this.isVertical
-            ? this.$content.scrollTop()
-            : this.$content.scrollLeft();
+        return this.isVertical ?
+            this.$content.scrollTop() :
+            this.$content.scrollLeft();
     };
 
     /**
@@ -378,9 +381,9 @@
         wrapperSize = self.isVertical ?
             self.$element.innerHeight()
             : self.$element.innerWidth();
-        contentSize = self.isVertical
-            ? self.$content.get(0).scrollHeight
-            : self.$content.get(0).scrollWidth;
+        contentSize = self.isVertical ?
+            self.$content.get(0).scrollHeight :
+            self.$content.get(0).scrollWidth;
         size = Math.max(self.options.scrollbarMinSize, Math.round(wrapperSize * Math.min(wrapperSize / contentSize, 1)));
 
         if (size < wrapperSize) {
@@ -421,14 +424,14 @@
         }
 
         position = this.getScrollPosition();
-        wrapperSize = self.isVertical
-            ? self.$element.innerHeight()
-            : self.$element.innerWidth();
+        wrapperSize = self.isVertical ?
+            self.$element.innerHeight() :
+            self.$element.innerWidth();
         contentSize = self.isVertical ? self.$content.get(0).scrollHeight : self.$content.get(0).scrollWidth;
         percentScroll = position / (contentSize - wrapperSize);
-        scrollbarSize = self.isVertical
-            ? self.$scrollbar.outerHeight()
-            : self.$scrollbar.outerWidth();
+        scrollbarSize = self.isVertical ?
+            self.$scrollbar.outerHeight() :
+            self.$scrollbar.outerWidth();
         delta = Math.round(percentScroll * (wrapperSize - scrollbarSize));
 
         changeTranslate(self.$scrollbar, self.isVertical, delta);
