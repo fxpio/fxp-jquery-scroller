@@ -373,6 +373,16 @@
     };
 
     /**
+     * Get the vertical/horizontal max scroll position.
+     *
+     * @returns {Number}
+     */
+    Scroller.prototype.getMaxScrollPosition = function () {
+        return this.isVertical ? this.$content.get(0).scrollHeight - this.$content.innerHeight()
+            : this.$content.get(0).scrollWidth - this.$content.innerWidth();
+    };
+
+    /**
      * On resize scrollbar action.
      *
      * @param {jQuery.Event|Event} [event]
