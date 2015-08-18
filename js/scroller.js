@@ -419,7 +419,7 @@
             self.$scrollbar.width(size);
         }
 
-        this.refreshScrollbarPosition();
+        self.refreshScrollbarPosition();
     };
 
     /**
