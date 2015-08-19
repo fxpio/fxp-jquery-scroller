@@ -274,7 +274,7 @@
             options.scrollbar = false;
         }
 
-        if (options.direction !== self.DIRECTION_VERTICAL) {
+        if (options.direction !== Scroller.DIRECTION_VERTICAL) {
             options.scrollerStickyHeader = false;
         }
     }
