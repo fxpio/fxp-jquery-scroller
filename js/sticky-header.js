@@ -74,6 +74,7 @@
         }
 
         $sticky.css('background-color', color);
+        $sticky.parent().css('background-color', color);
     }
 
     // STICKY HEADER CLASS DEFINITION
@@ -93,6 +94,7 @@
         this.$element   = $(element);
 
         this.$element.on('scroll.st.stickyheader', $.proxy(StickyHeader.prototype.checkPosition, this));
+        this.refresh();
         this.checkPosition();
     },
         old;
@@ -107,49 +109,53 @@
     };
 
     /**
+     * Refresh the sticky headers.
+     *
+     * @this StickyHeader
+     */
+    StickyHeader.prototype.refresh = function () {
+        this.$element.find('> .' + this.options.classSticky).remove();
+
+        this.$element.find('> ul > li > span, div > ul > li > span').each($.proxy(function (index, element) {
+            var $group = $(element),
+                $sticky;
+
+            $sticky = $('<div class="' + $group.parent().attr('class') + ' ' + this.options.classSticky + '" data-sticky-index="' + index + '"></div>');
+            $sticky.append($group.clone());
+            $sticky.css({
+                'position': 'absolute',
+                'top':      0,
+                'left':     0,
+                'right':    0,
+                'height':   'auto',
+                'z-index':  index + 1,
+                'margin':   0,
+                'display': 'none'
+            });
+            $group.attr('data-sticky-ref', index);
+            applyStickyBackgroundColor($group, $sticky);
+            this.$element.prepend($sticky);
+        }, this));
+    };
+
+    /**
      * Checks the position of content and refresh the sticky header.
      *
      * @this StickyHeader
      */
     StickyHeader.prototype.checkPosition = function () {
+        var $firstEl = $('> ul > li:first-child, div > ul > li:first-child', this.$element),
+            paddingTop = parseInt($firstEl.css('padding-top'), 10);
+
         this.$element.find('> ul > li > span, div > ul > li > span').each($.proxy(function (index, element) {
-            var $group = $(element),
-                top = $group.position().top,
-                $headerFind,
-                $nextItemFind,
-                $sticky;
+            var $headerFind = this.$element.find('> [data-sticky-index="' + index + '"]'),
+                $group = $(element),
+                top = $group.position().top - paddingTop;
 
-            if (top >= 0) {
-                this.$element.find('> [data-sticky-index="' + index + '"]').remove();
-                $group.removeAttr('data-sticky-ref');
-
-                return;
-            }
-
-            $headerFind = this.$element.find('> [data-sticky-index="' + index + '"]');
-            $nextItemFind = $group.parent().next().find('> span, > a');
-
-            if (0 === $headerFind.size()) {
-                $sticky = $('<div class="' + $group.parent().attr('class') + ' ' + this.options.classSticky + '" data-sticky-index="' + index + '"></div>');
-                $sticky.append($group.clone());
-                $sticky.css({
-                    'position': 'absolute',
-                    'top':      0,
-                    'left':     0,
-                    'right':    0,
-                    'height':   'auto',
-                    'z-index':  index + 1,
-                    'margin':   0
-                });
-                $group.attr('data-sticky-ref', index);
-                applyStickyBackgroundColor($group, $sticky);
-                this.$element.prepend($sticky);
-
-            } else if ($nextItemFind.eq(0).size() > 0 && $nextItemFind.eq(0).position().top <= 0) {
-                $headerFind.eq(0).css('display', 'none');
-
-            } else {
+            if (top <= 0) {
                 $headerFind.eq(0).css('display', '');
+            } else {
+                $headerFind.eq(0).css('display', 'none');
             }
         }, this));
     };
