@@ -105,7 +105,8 @@
      * @type Array
      */
     StickyHeader.DEFAULTS = {
-        classSticky: 'sticky-header'
+        classSticky: 'sticky-header',
+        selector: '> ul > li > span, div > ul > li > span'
     };
 
     /**
@@ -116,7 +117,7 @@
     StickyHeader.prototype.refresh = function () {
         this.$element.find('> .' + this.options.classSticky).remove();
 
-        this.$element.find('> ul > li > span, div > ul > li > span').each($.proxy(function (index, element) {
+        this.$element.find(this.options.selector).each($.proxy(function (index, element) {
             var $group = $(element),
                 $sticky;
 
@@ -144,10 +145,15 @@
      * @this StickyHeader
      */
     StickyHeader.prototype.checkPosition = function () {
-        var $firstEl = $('> ul > li:first-child, div > ul > li:first-child', this.$element),
-            paddingTop = parseInt($firstEl.css('padding-top'), 10);
+        var $find = this.$element.find(this.options.selector),
+            $FirstGroup = $find.eq(0),
+            paddingTop = 0;
 
-        this.$element.find('> ul > li > span, div > ul > li > span').each($.proxy(function (index, element) {
+        if ($FirstGroup.length > 0) {
+            paddingTop = parseInt($FirstGroup.parent().css('padding-top'), 10);
+        }
+
+        this.$element.find(this.options.selector).each($.proxy(function (index, element) {
             var $headerFind = this.$element.find('> [data-sticky-index="' + index + '"]'),
                 $group = $(element),
                 top = $group.position().top - paddingTop;

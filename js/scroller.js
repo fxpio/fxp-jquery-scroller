@@ -313,7 +313,7 @@
         this.$content.on('scroll.st.scroller', null, this, onScrolling);
 
         if (this.options.scrollerStickyHeader && $.fn.stickyHeader) {
-            this.stickyHeader = this.$element.stickyHeader().data('st.stickyheader');
+            this.stickyHeader = this.$element.stickyHeader(this.options.stickyOptions).data('st.stickyheader');
         }
 
         this.resizeScrollbar();
@@ -347,7 +347,8 @@
         autoConfig:           true,
         preventMouseScroll:   false,
         direction:            Scroller.DIRECTION_VERTICAL,
-        scrollerStickyHeader: false
+        scrollerStickyHeader: false,
+        stickyOptions:        {}
     };
 
     /**
