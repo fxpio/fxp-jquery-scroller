@@ -176,7 +176,7 @@
         var opts = self.options,
             contentCss = {},
             $content = $('<div class="' + opts.contentClass + '"></div>'),
-            scrollType = 'scroll';
+            scrollType = opts.scrollbar ? 'scroll' : 'auto';
 
         if (null !== self.options.contentSelector) {
             $content = $(self.options.contentSelector, self.$element);
