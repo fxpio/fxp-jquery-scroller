@@ -448,8 +448,12 @@
         position = this.getScrollPosition();
         wrapperSize = self.isVertical ? self.$element.innerHeight()
             : self.$element.innerWidth();
-        contentSize = self.isVertical ? self.$content.get(0).scrollHeight
-            : self.$content.get(0).scrollWidth;
+        contentSize = self.isVertical ? self.$content.get(0).scrollHeight +
+                parseInt(self.$element.css('padding-top'), 10) +
+                parseInt(self.$element.css('padding-bottom'), 10)
+            : self.$content.get(0).scrollWidth +
+                parseInt(self.$element.css('padding-left'), 10) +
+                parseInt(self.$element.css('padding-right'), 10);
         percentScroll = position / (contentSize - wrapperSize);
         scrollbarSize = self.isVertical ? self.$scrollbar.outerHeight()
             : self.$scrollbar.outerWidth();
