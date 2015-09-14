@@ -463,6 +463,19 @@
     };
 
     /**
+     * Refresh the scrollbar and sticky header.
+     *
+     * @this Scroller
+     */
+    Scroller.prototype.refresh = function () {
+        this.resizeScrollbar();
+
+        if (undefined !== this.stickyHeader) {
+            this.stickyHeader.refresh();
+        }
+    };
+
+    /**
      * Destroy instance.
      *
      * @this Scroller
