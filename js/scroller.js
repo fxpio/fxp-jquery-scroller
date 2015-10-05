@@ -186,6 +186,7 @@
         contentCss.position = 'relative';
         contentCss.display = 'block';
         contentCss.overflow = 'hidden';
+        contentCss['-webkit-transform'] = 'translate3d(0, 0, 0)';
 
         if (self.isVertical) {
             contentCss.width = 'auto';
@@ -255,7 +256,8 @@
                 'width': '',
                 'height': '',
                 'margin-right': '',
-                'margin-bottom': ''
+                'margin-bottom': '',
+                '-webkit-transform': ''
             });
 
         return null;
