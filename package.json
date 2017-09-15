@@ -18,7 +18,7 @@
     "url": "https://github.com/sonatra/sonatra-jquery-scroller.git"
   },
   "bugs": {
-    "url" : "https://github.com/sonatra/sonatra-jquery-scroller/issues"
+    "url": "https://github.com/sonatra/sonatra-jquery-scroller/issues"
   },
   "engines": {},
   "main": "js/scroller.js",
