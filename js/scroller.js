@@ -1,7 +1,7 @@
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -38,7 +38,7 @@
      * @private
      */
     function trigger(name, self) {
-        var event = $.Event(name + '.st.scroller');
+        var event = $.Event(name + '.fxp.scroller');
         event.hammerScroll = self;
 
         self.$element.trigger(event);
@@ -304,15 +304,15 @@
         this.$content = wrapContent(this);
 
         if (this.options.preventMouseScroll) {
-            this.$element.on('DOMMouseScroll.st.scroller mousewheel.st.scroller', null, this, onPreventMouseScroll);
+            this.$element.on('DOMMouseScroll.fxp.scroller mousewheel.fxp.scroller', null, this, onPreventMouseScroll);
         }
 
         if (this.options.scrollbar) {
             this.$scrollbar = generateScrollbar(this, this.options.direction);
-            $(window).on('resize.st.scroller-bar' + this.guid, null, this, this.resizeScrollbar);
+            $(window).on('resize.fxp.scroller-bar' + this.guid, null, this, this.resizeScrollbar);
         }
 
-        this.$content.on('scroll.st.scroller', null, this, onScrolling);
+        this.$content.on('scroll.fxp.scroller', null, this, onScrolling);
 
         if (this.options.scrollerStickyHeader && $.fn.stickyHeader) {
             this.stickyHeader = this.$element.stickyHeader(this.options.stickyOptions).data('st.stickyheader');
@@ -483,10 +483,10 @@
      * @this Scroller
      */
     Scroller.prototype.destroy = function () {
-        $(window).off('resize.st.scroller-bar' + this.guid, this.resizeScrollbar);
-        this.$content.off('scroll.st.scroller', onScrolling);
+        $(window).off('resize.fxp.scroller-bar' + this.guid, this.resizeScrollbar);
+        this.$content.off('scroll.fxp.scroller', onScrolling);
         this.$content = unwrapContent(this);
-        this.$element.off('DOMMouseScroll.st.scroller mousewheel.st.scroller', onPreventMouseScroll);
+        this.$element.off('DOMMouseScroll.fxp.scroller mousewheel.fxp.scroller', onPreventMouseScroll);
 
         if (undefined !== this.stickyHeader) {
             this.stickyHeader.destroy();

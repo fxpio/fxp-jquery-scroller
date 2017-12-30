@@ -1,7 +1,7 @@
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -93,7 +93,7 @@
         this.options    = $.extend(true, {}, StickyHeader.DEFAULTS, options);
         this.$element   = $(element);
 
-        this.$element.on('scroll.st.stickyheader', $.proxy(StickyHeader.prototype.checkPosition, this));
+        this.$element.on('scroll.fxp.stickyheader', $.proxy(StickyHeader.prototype.checkPosition, this));
         this.refresh();
         this.checkPosition();
     },
@@ -172,7 +172,7 @@
      * @this StickyHeader
      */
     StickyHeader.prototype.destroy = function () {
-        this.$element.off('scroll.st.stickyheader', $.proxy(StickyHeader.prototype.checkPosition, this));
+        this.$element.off('scroll.fxp.stickyheader', $.proxy(StickyHeader.prototype.checkPosition, this));
         this.$element.find('> .' + this.options.classSticky).remove();
 
         this.$element.removeData('st.stickyheader');

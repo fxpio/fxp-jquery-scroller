@@ -12,7 +12,7 @@ Installation
 ------------
 
 ```
-npm install @sonatra/jquery-scroller --save
+npm install @fxp/jquery-scroller --save
 ```
 
 Dev installation

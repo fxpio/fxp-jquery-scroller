@@ -1,8 +1,8 @@
 {
-  "name": "@sonatra/jquery-scroller",
+  "name": "@fxp/jquery-scroller",
   "version": "1.0.0",
   "license": "MIT",
-  "author": "François Pluchino <francois.pluchino@sonatra.com>",
+  "author": "François Pluchino <francois.pluchino@gmail.com>",
   "contributors": [],
   "description": "A custom scrollbar for desktop browser",
   "keywords": [
@@ -12,13 +12,13 @@
     "desktop",
     "jquery"
   ],
-  "homepage": "https://github.com/sonatra/sonatra-jquery-scroller",
+  "homepage": "https://github.com/fxpio/fxp-jquery-scroller",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sonatra/sonatra-jquery-scroller.git"
+    "url": "https://github.com/fxpio/fxp-jquery-scroller.git"
   },
   "bugs": {
-    "url": "https://github.com/sonatra/sonatra-jquery-scroller/issues"
+    "url": "https://github.com/fxpio/fxp-jquery-scroller/issues"
   },
   "engines": {},
   "main": "js/scroller.js",
