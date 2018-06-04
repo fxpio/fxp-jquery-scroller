@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>Basic wrapper horizontal example - Fxp Jquery Scroller</title>
-    <link href="../css/scroller.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
     <style>
         body {
             height: 2000px;
@@ -64,20 +64,6 @@
         </p>
     </div>
 </div>
-<script>
-    var require = {
-        paths: {
-            'jquery': '../node_modules/jquery/dist/jquery',
-            'fxp-jquery-scroller': '../js/scroller'
-        },
-        deps: [
-            'fxp-jquery-scroller'
-        ],
-        callback: function () {
-            $(window).trigger('load');
-        }
-    };
-</script>
-<script src="../node_modules/requirejs/require.js" async="async"></script>
+<script src="main.js" async="async"></script>
 </body>
 </html>

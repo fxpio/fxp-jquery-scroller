@@ -1,13 +1,6 @@
 Getting Started
 ===============
 
-Prerequisites
--------------
-
-This library require:
-
-- jquery
-
 Installation
 ------------
 
@@ -24,8 +17,8 @@ Dev installation
 npm install
 ```
 
-### Use grunt
+### Use Webpack Encore
 
 ```
-grunt serve
+encore dev-server --port 9000
 ```

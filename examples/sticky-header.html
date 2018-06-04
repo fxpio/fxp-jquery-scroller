@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <title>Sticky header example - Fxp Jquery Scroller</title>
-    <link href="../css/scroller.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
     <style>
         body {
             height: 2000px;
@@ -91,22 +91,6 @@
         </li>
     </ul>
 </div>
-<script>
-    var require = {
-        paths: {
-            'jquery': '../node_modules/jquery/dist/jquery',
-            'fxp-jquery-scroller': '../js/scroller',
-            'fxp-sticky-header': '../js/sticky-header'
-        },
-        deps: [
-            'fxp-jquery-scroller',
-            'fxp-sticky-header'
-        ],
-        callback: function () {
-            $(window).trigger('load');
-        }
-    };
-</script>
-<script src="../node_modules/requirejs/require.js" async="async"></script>
+<script src="main.js" async="async"></script>
 </body>
 </html>
