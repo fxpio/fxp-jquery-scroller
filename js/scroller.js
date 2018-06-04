@@ -233,4 +233,4 @@ export default class Scroller
     }
 }
 
-pluginify('scroller', 'fxp.scroller', Scroller, true, 'data-scroller');
+pluginify('scroller', 'fxp.scroller', Scroller, true, '[data-scroller="true"]');
