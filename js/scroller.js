@@ -45,15 +45,6 @@ const DEFAULTS = {
  */
 export default class Scroller
 {
-    guid;
-    options;
-    nativeScrollbarSize;
-    isVertical;
-    $element;
-    $content;
-    $scrollbar;
-    stickyHeader;
-
     /**
      * Constructor.
      *

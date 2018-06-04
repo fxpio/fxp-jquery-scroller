@@ -23,10 +23,6 @@ const DEFAULTS = {
  */
 export default class StickyHeader
 {
-    guid;
-    options;
-    $element;
-
     /**
      * Constructor.
      *
@@ -34,7 +30,6 @@ export default class StickyHeader
      * @param {object}      options The options
      */
     constructor(element, options = {}) {
-        this.guid     = jQuery.guid;
         this.options  = $.extend(true, {}, DEFAULTS, options);
         this.$element = $(element);
 
@@ -107,7 +102,6 @@ export default class StickyHeader
 
         this.$element.removeData('fxp.stickyheader');
 
-        this.guid = undefined;
         this.options = undefined;
         this.$element = undefined;
     }
