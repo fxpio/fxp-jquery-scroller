@@ -18,6 +18,7 @@ export function wrapContent(self) {
     let opts = self.options,
         contentCss = {},
         $content = $('<div class="' + opts.contentClass + '"></div>'),
+        contentMarginDirection = 'right',
         scrollType = self.nativeScrollbarSize > 0 ? 'scroll' : 'auto';
 
     if (null !== self.options.contentSelector) {
@@ -25,17 +26,19 @@ export function wrapContent(self) {
         $content.addClass(self.options.contentClass);
     }
 
+    contentMarginDirection = 'rtl' === $content.css('direction') ? 'left' : contentMarginDirection;
     contentCss.position = 'relative';
     contentCss.display = 'block';
     contentCss.overflow = 'hidden';
     contentCss['-webkit-transform'] = 'translate3d(0, 0, 0)';
+    contentCss['transform'] = 'translate3d(0, 0, 0)';
 
     if (self.isVertical) {
         contentCss.width = 'auto';
         contentCss.height = '100%';
         contentCss['overflow-x'] = 'hidden';
         contentCss['overflow-y'] = scrollType;
-        contentCss['margin-right'] = -self.nativeScrollbarSize + 'px';
+        contentCss['margin-' + contentMarginDirection] = -self.nativeScrollbarSize + 'px';
     } else {
         contentCss.width = '100%';
         contentCss.height = 'auto';
@@ -95,9 +98,11 @@ export function unwrapContent(self) {
             'overflow': '',
             'width': '',
             'height': '',
+            'margin-left': '',
             'margin-right': '',
             'margin-bottom': '',
-            '-webkit-transform': ''
+            '-webkit-transform': '',
+            'transform': ''
         });
 
     return null;
