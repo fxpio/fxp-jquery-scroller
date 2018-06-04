@@ -20,5 +20,5 @@ npm install
 ### Use Webpack Encore
 
 ```
-encore dev-server --port 9000
+$ encore dev-server --port 9000
 ```

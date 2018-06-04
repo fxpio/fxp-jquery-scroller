@@ -22,7 +22,7 @@
   },
   "scripts": {
     "dev": "encore dev",
-    "hot": "encore dev-server --hot",
+    "serve": "encore dev-server --port 9000",
     "build": "encore production"
   },
   "engines": {},
