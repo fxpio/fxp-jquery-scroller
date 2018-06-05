@@ -35,6 +35,7 @@
     "@symfony/webpack-encore": "^0.20.1",
     "copy-webpack-plugin": "^4.5.1",
     "less": "^3.0.4",
-    "less-loader": "^4.1.0"
+    "less-loader": "^4.1.0",
+    "uglifyjs-webpack-plugin": "^1.2.5"
   }
 }
