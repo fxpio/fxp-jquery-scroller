@@ -8,6 +8,7 @@
  */
 
 import pluginify from '@fxp/jquery-pluginify';
+import BasePlugin from '@fxp/jquery-pluginify/js/plugin';
 import {wrapContent, unwrapContent} from './utils/wrapper';
 import {validateOptions} from "./utils/options";
 import {onScrolling, onPreventMouseScroll} from "./utils/events";
@@ -43,7 +44,7 @@ const DEFAULTS = {
 /**
  * Scroller class.
  */
-export default class Scroller
+export default class Scroller extends BasePlugin
 {
     /**
      * Constructor.
@@ -52,14 +53,12 @@ export default class Scroller
      * @param {object}      options The options
      */
     constructor(element, options = {}) {
-        this.guid    = jQuery.guid;
-        this.options = $.extend(true, {}, DEFAULTS, options);
+        super(element, $.extend(true, {}, DEFAULTS, options));
         this.nativeScrollbarSize = getNativeScrollWidth();
 
         validateOptions(this, this.options);
 
         this.isVertical = this.options.direction === DIRECTION_VERTICAL;
-        this.$element = $(element).eq(0);
         this.$content = wrapContent(this);
 
         if (this.options.preventMouseScroll) {
@@ -211,14 +210,7 @@ export default class Scroller
             this.stickyHeader.destroy();
         }
 
-        this.guid = undefined;
-        this.options = undefined;
-        this.nativeScrollbarSize = undefined;
-        this.isVertical = undefined;
-        this.$element = undefined;
-        this.$content = undefined;
-        this.$scrollbar = undefined;
-        this.stickyHeader = undefined;
+        super.destroy();
     }
 }
 
