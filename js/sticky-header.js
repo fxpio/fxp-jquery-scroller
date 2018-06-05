@@ -100,8 +100,6 @@ export default class StickyHeader
         this.$element.off('scroll.fxp.stickyheader', $.proxy(StickyHeader.prototype.checkPosition, this));
         this.$element.find('> .' + this.options.classSticky).remove();
 
-        this.$element.removeData('fxp.stickyheader');
-
         this.options = undefined;
         this.$element = undefined;
     }

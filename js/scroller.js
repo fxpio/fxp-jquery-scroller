@@ -211,8 +211,6 @@ export default class Scroller
             this.stickyHeader.destroy();
         }
 
-        this.$element.removeData('fxp.scroller');
-
         this.guid = undefined;
         this.options = undefined;
         this.nativeScrollbarSize = undefined;
