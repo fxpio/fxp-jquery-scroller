@@ -26,22 +26,6 @@ export const DIRECTION_VERTICAL = 'vertical';
 export const DIRECTION_HORIZONTAL = 'horizontal';
 
 /**
- * Defaults options.
- */
-const DEFAULTS = {
-    scrollbar:            true,
-    scrollbarInverse:     false,
-    scrollbarMinSize:     14,
-    contentClass:         'scroller-content',
-    contentSelector:      null,
-    autoConfig:           true,
-    preventMouseScroll:   false,
-    direction:            DIRECTION_VERTICAL,
-    scrollerStickyHeader: false,
-    stickyOptions:        {}
-};
-
-/**
  * Scroller class.
  */
 export default class Scroller extends BasePlugin
@@ -53,7 +37,7 @@ export default class Scroller extends BasePlugin
      * @param {object}      options The options
      */
     constructor(element, options = {}) {
-        super(element, $.extend(true, {}, DEFAULTS, options));
+        super(element, $.extend(true, {}, Scroller.defaultOptions, options));
         this.nativeScrollbarSize = getNativeScrollWidth();
 
         validateOptions(this, this.options);
@@ -213,5 +197,21 @@ export default class Scroller extends BasePlugin
         super.destroy();
     }
 }
+
+/**
+ * Defaults options.
+ */
+Scroller.defaultOptions = {
+    scrollbar:            true,
+    scrollbarInverse:     false,
+    scrollbarMinSize:     14,
+    contentClass:         'scroller-content',
+    contentSelector:      null,
+    autoConfig:           true,
+    preventMouseScroll:   false,
+    direction:            DIRECTION_VERTICAL,
+    scrollerStickyHeader: false,
+    stickyOptions:        {}
+};
 
 pluginify('scroller', 'fxp.scroller', Scroller, true, '[data-scroller="true"]');

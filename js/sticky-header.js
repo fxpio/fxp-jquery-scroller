@@ -12,14 +12,6 @@ import BasePlugin from '@fxp/jquery-pluginify/js/plugin';
 import {applyStickyBackgroundColor} from "./utils/sticky";
 
 /**
- * Defaults options.
- */
-const DEFAULTS = {
-    classSticky: 'sticky-header',
-    selector: '> ul > li > span, div > ul > li > span'
-};
-
-/**
  * Sticky Header class.
  */
 export default class StickyHeader extends BasePlugin
@@ -31,7 +23,7 @@ export default class StickyHeader extends BasePlugin
      * @param {object}      options The options
      */
     constructor(element, options = {}) {
-        super(element, $.extend(true, {}, DEFAULTS, options));
+        super(element, $.extend(true, {}, StickyHeader.defaultOptions, options));
 
         this.$element.on('scroll.fxp.stickyheader', $.proxy(this.checkPosition, this));
         this.refresh();
@@ -103,5 +95,13 @@ export default class StickyHeader extends BasePlugin
         super.destroy();
     }
 }
+
+/**
+ * Defaults options.
+ */
+StickyHeader.defaultOptions = {
+    classSticky: 'sticky-header',
+    selector: '> ul > li > span, div > ul > li > span'
+};
 
 pluginify('stickyHeader', 'fxp.stickyheader', StickyHeader, true, 'data-sticky-header');
