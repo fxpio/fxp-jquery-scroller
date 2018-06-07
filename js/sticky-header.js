@@ -23,7 +23,7 @@ export default class StickyHeader extends BasePlugin
      * @param {object}      options The options
      */
     constructor(element, options = {}) {
-        super(element, $.extend(true, {}, StickyHeader.defaultOptions, options));
+        super(element, options);
 
         this.$element.on('scroll.fxp.stickyheader', $.proxy(this.checkPosition, this));
         this.refresh();

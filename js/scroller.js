@@ -37,7 +37,7 @@ export default class Scroller extends BasePlugin
      * @param {object}      options The options
      */
     constructor(element, options = {}) {
-        super(element, $.extend(true, {}, Scroller.defaultOptions, options));
+        super(element, options);
         this.nativeScrollbarSize = getNativeScrollWidth();
 
         validateOptions(this, this.options);
