@@ -10,6 +10,7 @@
 import pluginify from '@fxp/jquery-pluginify';
 import BasePlugin from '@fxp/jquery-pluginify/js/plugin';
 import {applyStickyBackgroundColor} from "./utils/sticky";
+import $ from 'jquery';
 
 /**
  * Sticky Header class.

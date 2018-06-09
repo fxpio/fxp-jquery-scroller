@@ -14,6 +14,7 @@ import {validateOptions} from "./utils/options";
 import {onScrolling, onPreventMouseScroll} from "./utils/events";
 import {getNativeScrollWidth, generateScrollbar} from "./utils/scrollbar";
 import {changeTranslate} from "./utils/css";
+import $ from 'jquery';
 
 /**
  * Vertical scrollbar direction.
