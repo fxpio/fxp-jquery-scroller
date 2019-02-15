@@ -13,18 +13,9 @@ import {wrapContent, unwrapContent} from './utils/wrapper';
 import {validateOptions} from "./utils/options";
 import {onScrolling, onPreventMouseScroll} from "./utils/events";
 import {getNativeScrollWidth, generateScrollbar} from "./utils/scrollbar";
+import {DIRECTION_VERTICAL} from "./utils/const";
 import {changeTranslate} from "./utils/css";
 import $ from 'jquery';
-
-/**
- * Vertical scrollbar direction.
- */
-export const DIRECTION_VERTICAL = 'vertical';
-
-/**
- * Horizontal scrollbar direction.
- */
-export const DIRECTION_HORIZONTAL = 'horizontal';
 
 /**
  * Scroller class.

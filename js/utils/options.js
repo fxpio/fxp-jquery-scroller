@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-import {DIRECTION_VERTICAL} from "../scroller";
+import {DIRECTION_VERTICAL} from './const';
 
 /**
  * Validate the options.
