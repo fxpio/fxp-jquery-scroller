@@ -1,0 +1,41 @@
+[data-scroller="true"] {
+  overflow: hidden;
+}
+.scroller-scrollbar {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.scroller-scrollbar.vertical {
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100%;
+  margin: 0 2px;
+}
+.scroller-scrollbar.vertical.scroller-inverse {
+  left: 0;
+  right: inherit;
+}
+.scroller-scrollbar.horizontal {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  margin: 2px 0;
+}
+.scroller-scrollbar.horizontal.scroller-inverse {
+  top: 0;
+  bottom: inherit;
+}
+.scroller-scrollbar.scroller-active {
+  display: block;
+}
+.scroller-scrollbar {
+  background-color: #000;
+  opacity: 0.32;
+}
