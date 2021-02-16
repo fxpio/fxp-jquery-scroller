@@ -1,9 +1,11 @@
 var FxpScroller = (function (exports, $$1) {
   'use strict';
 
-  $$1 = $$1 && $$1.hasOwnProperty('default') ? $$1['default'] : $$1;
+  $$1 = $$1 && Object.prototype.hasOwnProperty.call($$1, 'default') ? $$1['default'] : $$1;
 
   function _typeof(obj) {
+    "@babel/helpers - typeof";
+
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
       _typeof = function (obj) {
         return typeof obj;
@@ -70,6 +72,19 @@ var FxpScroller = (function (exports, $$1) {
     return _setPrototypeOf(o, p);
   }
 
+  function _isNativeReflectConstruct() {
+    if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+    if (Reflect.construct.sham) return false;
+    if (typeof Proxy === "function") return true;
+
+    try {
+      Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   function _assertThisInitialized(self) {
     if (self === void 0) {
       throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -84,6 +99,25 @@ var FxpScroller = (function (exports, $$1) {
     }
 
     return _assertThisInitialized(self);
+  }
+
+  function _createSuper(Derived) {
+    var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+    return function _createSuperInternal() {
+      var Super = _getPrototypeOf(Derived),
+          result;
+
+      if (hasNativeReflectConstruct) {
+        var NewTarget = _getPrototypeOf(this).constructor;
+
+        result = Reflect.construct(Super, arguments, NewTarget);
+      } else {
+        result = Super.apply(this, arguments);
+      }
+
+      return _possibleConstructorReturn(this, result);
+    };
   }
 
   function _superPropBase(object, property) {
@@ -196,9 +230,7 @@ var FxpScroller = (function (exports, $$1) {
    * Base class for plugin.
    */
 
-  var BasePlugin =
-  /*#__PURE__*/
-  function () {
+  var BasePlugin = /*#__PURE__*/function () {
     /**
      * Constructor.
      *
@@ -236,21 +268,21 @@ var FxpScroller = (function (exports, $$1) {
 
     }], [{
       key: "defaultOptions",
-      set: function set(options) {
-        DEFAULT_OPTIONS[this.name] = $$1.extend(true, {}, DEFAULT_OPTIONS[this.name], options);
-      }
+      get:
       /**
        * Get the default options.
        *
        * @return {object}
        */
-      ,
-      get: function get() {
+      function get() {
         if (undefined === DEFAULT_OPTIONS[this.name]) {
           DEFAULT_OPTIONS[this.name] = {};
         }
 
         return DEFAULT_OPTIONS[this.name];
+      },
+      set: function set(options) {
+        DEFAULT_OPTIONS[this.name] = $$1.extend(true, {}, DEFAULT_OPTIONS[this.name], options);
       }
     }]);
 
@@ -549,10 +581,10 @@ var FxpScroller = (function (exports, $$1) {
    * Scroller class.
    */
 
-  var Scroller =
-  /*#__PURE__*/
-  function (_BasePlugin) {
+  var Scroller = /*#__PURE__*/function (_BasePlugin) {
     _inherits(Scroller, _BasePlugin);
+
+    var _super = _createSuper(Scroller);
 
     /**
      * Constructor.
@@ -567,22 +599,22 @@ var FxpScroller = (function (exports, $$1) {
 
       _classCallCheck(this, Scroller);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(Scroller).call(this, element, options));
+      _this = _super.call(this, element, options);
       _this.nativeScrollbarSize = getNativeScrollWidth();
-      validateOptions(_assertThisInitialized(_assertThisInitialized(_this)), _this.options);
+      validateOptions(_assertThisInitialized(_this), _this.options);
       _this.isVertical = _this.options.direction === DIRECTION_VERTICAL;
-      _this.$content = wrapContent(_assertThisInitialized(_assertThisInitialized(_this)));
+      _this.$content = wrapContent(_assertThisInitialized(_this));
 
       if (_this.options.preventMouseScroll) {
-        _this.$element.on('DOMMouseScroll.fxp.scroller mousewheel.fxp.scroller', null, _assertThisInitialized(_assertThisInitialized(_this)), onPreventMouseScroll);
+        _this.$element.on('DOMMouseScroll.fxp.scroller mousewheel.fxp.scroller', null, _assertThisInitialized(_this), onPreventMouseScroll);
       }
 
       if (_this.options.scrollbar) {
-        _this.$scrollbar = generateScrollbar(_assertThisInitialized(_assertThisInitialized(_this)), _this.options.direction);
-        $$1(window).on('resize.fxp.scroller-bar' + _this.guid, null, _assertThisInitialized(_assertThisInitialized(_this)), _this.resizeScrollbar);
+        _this.$scrollbar = generateScrollbar(_assertThisInitialized(_this), _this.options.direction);
+        $$1(window).on('resize.fxp.scroller-bar' + _this.guid, null, _assertThisInitialized(_this), _this.resizeScrollbar);
       }
 
-      _this.$content.on('scroll.fxp.scroller', null, _assertThisInitialized(_assertThisInitialized(_this)), onScrolling);
+      _this.$content.on('scroll.fxp.scroller', null, _assertThisInitialized(_this), onScrolling);
 
       if (_this.options.scrollerStickyHeader && $$1.fn.stickyHeader) {
         _this.stickyHeader = _this.$element.stickyHeader(_this.options.stickyOptions).data('fxp.stickyheader');

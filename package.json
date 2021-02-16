@@ -23,7 +23,7 @@
   "scripts": {
     "dev": "encore dev",
     "serve": "encore dev-server --port 9000",
-    "build:style": "lessc less/scroller.less dist/scroller.css",
+    "build:style": "sass --no-source-map scss/scroller.scss dist/scroller.css",
     "build:module": "rollup -c",
     "build": "yarn run build:module && yarn run build:style"
   },
@@ -34,13 +34,16 @@
     "jquery": "^2.2.0||^3.2.0"
   },
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.23.0",
+    "@symfony/webpack-encore": "^1.1.0",
+    "file-loader": "^6.0.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "rollup": "^1.1.2",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^4.0.0",
-    "rollup-plugin-uglify": "^6.0.2"
+    "rollup-plugin-uglify": "^6.0.2",
+    "sass": "^1.32.7",
+    "sass-loader": "^11.0.1"
   }
 }

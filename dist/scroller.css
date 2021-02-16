@@ -1,6 +1,7 @@
-[data-scroller="true"] {
+[data-scroller=true] {
   overflow: hidden;
 }
+
 .scroller-scrollbar {
   display: none;
   position: absolute;
@@ -35,6 +36,7 @@
 .scroller-scrollbar.scroller-active {
   display: block;
 }
+
 .scroller-scrollbar {
   background-color: #000;
   opacity: 0.32;

@@ -7,6 +7,6 @@
  * file that was distributed with this source code.
  */
 
-import '../less/scroller.less';
+import '../scss/scroller.scss';
 import '../js/scroller';
 import '../js/sticky-header';
